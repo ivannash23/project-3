@@ -6,8 +6,9 @@
 		<h5><%= t.date.to_formatted_s(:long) %></h5>	
 		<h5 class="lat"><%= t.lat %></h5> 
 		<h5 class="lng"><%= t.lng %></h5> 
+		<%= link_to 'Destroy', task_users_path(t.id), method: :delete, data: { confirm: 'Are you sure?' } %>
 	<% end %>
-	<% else %>
+<% else %>
 	Not your page, Marine.
 <% end %>
 <div id="map"></div>
