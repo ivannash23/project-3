@@ -11,7 +11,7 @@ class TaskUserController < ApplicationController
     @task = Task.find(params[:tasks_id])
     @user.tasks.push(@task)
 
-    redirect_to task_users_index_path(@user)
+    redirect_to task_users_index_path(current_user.id)
   end
 end
 

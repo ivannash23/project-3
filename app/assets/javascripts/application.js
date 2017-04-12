@@ -25,16 +25,16 @@
     });
 
 		var lats = $(".lat");
-		var lngs = $(".lat");
+		var lngs = $(".lng");
 
-		for(var i=0; i<lats.length; i++){
-			var tempLat1 = [Number(parseFloat(lats[i].innerText).toFixed(7)),Number(parseFloat(lngs[i].innerText).toFixed(7))];
+		for(var i=0; i < lats.length; i++){
+			var tempLat = Number(parseFloat(lats[i].innerText).toFixed(7));
+			var tempLng = Number(parseFloat(lngs[i].innerText).toFixed(7));
 	    
 	    var marker = new google.maps.Marker({
 	      map: map,
-	      position: {lat:tempLat1[0], lng:tempLat1[1]}
+	      position: {lat:tempLat, lng:tempLng}
 	    });
-	    console.log(marker.position.lat)
 
 		}
 		
