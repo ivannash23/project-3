@@ -3,9 +3,11 @@
   <%= @task.title %>
 </p>
 
+
 <p>
   <strong>Date:</strong>
-  <%= @task.date %>
+  <%= @task.date.strftime("%B %d, %Y") %>
+  <%= @task.date.strftime("%H:%M") %>
 </p>
 
 <%= link_to 'Edit', edit_task_path(@task) %> |

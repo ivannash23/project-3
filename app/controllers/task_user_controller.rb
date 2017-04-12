@@ -16,6 +16,9 @@ class TaskUserController < ApplicationController
 			if current_user.company == @user.company && current_user.platoon == @user.platoon
 			@user.tasks.push(@task)
 			redirect_to task_users_index_path(@user.id)
+			else
+				flash[:notice] = "Not your Marine"
+			redirect_to tasks_path
 			end
 		end
 	end
@@ -29,11 +32,14 @@ class TaskUserController < ApplicationController
   end
 
   def destroy
-    @user = current_user
-    @task = Task.find(params[:tasks_id])
+    @user = User.find_by_id(params[:tasks_id])
+    @task = Task.find_by_id(params[:user])
+    if current_user.Rank > 4 && current_user.company == @user.company && current_user.platoon == @user.platoon
     @user.tasks.delete(@task)
-
-    redirect_to task_users_index_path(current_user.id)
-  end
+    redirect_to task_users_index_path(@user.id)
+	  else
+	  	flash[:notice] = "Only E-4s and above can delete other Marines Tasks"
+	  end
+	end
 end
 
