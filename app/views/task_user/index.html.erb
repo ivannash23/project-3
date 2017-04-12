@@ -3,9 +3,11 @@
 	<% @tasks.each do |t| %>
 		<h3><%= t.title %></h3>	
 		<h5><%= t.date.to_formatted_s(:long) %></h5>	
-		<h5 id="lat"><%= t.lat %></h5> 
-		<h5 id="lng"><%= t.lng %></h5> 
+		<h5 class="lat"><%= t.lat %></h5> 
+		<h5 class="lng"><%= t.lng %></h5> 
 	<% end %>
 	<% else %>
 	Not your page, Marine.
 <% end %>
+<div id="map"></div>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD71DX5vsVlbY1AxHlBqJkfQX0zIbDJAIs&callback=initMap" ></script>

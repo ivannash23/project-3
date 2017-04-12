@@ -31,3 +31,6 @@ th {
 	border-bottom: 1px solid #DDD; 
 }
 
+#map {
+  height: 400px;
+}
