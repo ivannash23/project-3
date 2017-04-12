@@ -13,13 +13,15 @@
     <% @tasks.each do |task| %>
       <tr>
         <td><%= task.title %></td>
-        <td><%= task.date %></td>
+        <td><%= task.date.to_formatted_s(:long) %></td>
         <td><% if current_user %> 
       <%= button_to "Join", task_users_path(task) %>
     <% end %></td>
+        <% if current_user.Rank > 5 %>
         <td><%= link_to 'Show', task %></td>
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
         <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

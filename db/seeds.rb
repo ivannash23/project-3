@@ -13,7 +13,13 @@ TaskUser.delete_all
 User.create({name:"Ivan Miranda",
 						email:"i@m",
 						 password:"123456",
-						 Rank: 6})
+						 Rank: 6,
+						 company: "ALPHA"})
+User.create({name:"Tim Smith",
+						email:"t@s",
+						 password:"123456",
+						 Rank: 3,
+						 company: "ALPHA"})
 User.create({email: FFaker::Internet.free_email,
  						name: FFaker::Name.name,
  						Rank: 3,

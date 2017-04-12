@@ -1,6 +1,7 @@
-<% if current_user == @user || current_user.Rank > 4 %>
-	<%= @user.name %> has to following tasks
-	<% @tasks.each do |t| %>
+<% if current_user == @user || current_user.Rank > 4 && current_user.company ==@user.company && current_user.platoon == @user.platoon %>
+
+	<h1>E-<%= @user.Rank %> <%= @user.name %></h1> 
+	<% @user.tasks.each do |t| %>
 		<h3><%= t.title %></h3>	
 		<h5><%= t.date.to_formatted_s(:long) %></h5>	
 		<h5 class="lat"><%= t.lat %></h5> 
