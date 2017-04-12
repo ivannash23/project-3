@@ -1,32 +1,27 @@
 <h1>Tasks</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Date</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
   <tbody>
     <% @tasks.each do |task| %>
       <tr>
         <td><%= task.title %></td>
         <td><%= task.date.to_formatted_s(:long) %></td>
         <td><% if current_user %> 
-      <%= button_to "Join", task_users_path(task) %>
+        <%= form_tag task_users_assign_path(task) do %>
+          <%= label_tag(:name, "Assign to") %>
+          <%= text_field_tag :name, params[:name]  %>
+          <%= submit_tag("Assign") %>
+        <% end %></td>
+      <td><%= button_to "Join", task_users_path(task) %>
     <% end %></td>
         <% if current_user.Rank > 5 %>
         <td><%= link_to 'Show', task %></td>
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
         <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'New Task', new_task_path %></td>
         <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Task', new_task_path %>
