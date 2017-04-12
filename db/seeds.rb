@@ -40,14 +40,14 @@ User.create({email: FFaker::Internet.free_email,
  						password: "123456"})
 
 Task.create({title: "Dentist",
-						date: DateTime.strptime("04/15/2017 8:00", "%m/%d/%Y %H:%M"),
+						date: Time.strptime("04/15/2017 8:00", "%m/%d/%Y %H:%M"),
 						lat: "32.888126",
 						lng: "-117.130236"})
 Task.create({title: "Physical Fitness Test",
-						date: DateTime.strptime("04/15/2017 6:30", "%m/%d/%Y %H:%M"),
+						date: Time.strptime("04/15/2017 6:30", "%m/%d/%Y %H:%M"),
 						lat: "32.887752", 
 						lng: "-117.141945" })
 Task.create({title: "Morning PT",
-						date: DateTime.strptime("04/15/2017 5:30", "%m/%d/%Y %H:%M"),
+						date: Time.strptime("04/15/2017 5:30", "%m/%d/%Y %H:%M"),
 						lat: "32.888127", 
 						lng: "-117.134978" })
