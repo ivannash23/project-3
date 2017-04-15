@@ -1,31 +1,35 @@
 <h1>Tasks</h1>
 
-<table>
-  <tbody>
+<div class="container-fluid">
     <% @tasks.each do |task| %>
-      <tr>
-        <td>
+      <div class="row">
+        <div class="col-md-3">
+          <h4><%= task.title %></h4>
+          <h5><%= task.date.to_formatted_s(:long) %></h5>
+          <%= button_to "Join", task_users_path(task), class: "btn btn-success" %>
+          <br>
+          </div>
+          <div class="col-md-3">
         <%= form_tag task_users_assign_path(task, :name) do %>
-          <%= label_tag(:name, "Assign to") %>
+          <%= label_tag(:name, "Assign task") %>
           <%= text_field_tag :name, params[:name]  %>
-          <%= submit_tag("Assign") %>
+          <%= submit_tag "submit" , class: "btn btn-success" %>
         <% end %>
-        </td>
-
-        <% if current_user %> 
-        <td><%= task.title %></td>
-        <td><%= task.date.to_formatted_s(:long) %></td>
-        <td><%= button_to "Join", task_users_path(task) %></td>
-        <% end %>
-
         <% if current_user.Rank > 5 %>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <div class="btn-group">
+        <%= link_to 'Show', task , class: "btn btn-success" %>
+        <%= link_to 'Edit', edit_task_path(task), class: "btn btn-success" %>
         <% end %>
-      </tr>
+        <% if current_user.Rank > 6 %>
+        <%= link_to 'Destroy', task, class: "btn btn-success", method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+        </div>
+        </div>
+
+        
+
+      </div>
     <% end %>
-        <td><%= link_to 'New Task', new_task_path %></td>
-  </tbody>
-</table>
+        <%= link_to 'New Task', new_task_path, class: "btn btn-success" %>
+</div>
 

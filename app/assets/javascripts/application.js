@@ -87,15 +87,15 @@
             	// check if it's time for that task
             	var d = new Date();
             	var h = d.getHours();
-            	var m = (d.getMinutes()<10 ? '0':'') + d.getMinutes();
+            	var m = (d.getMinutes()< 10 ? '0':'') + d.getMinutes();
             	var displayHour= h+ ":" + m;
             	if($hours[j].innerText == displayHour){
             		console.log("Checked in for task " + names[j])
             	}else{
-            		console.log("Come back on the task time for task " + names[j])
+            		alert("You are not at your task location")
             	}
             } else{
-            	console.log("You are not at your task location for task " + names[j])
+            	alert("You are not at your task location")
           	} 
           }
         }

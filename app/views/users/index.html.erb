@@ -1,5 +1,9 @@
-<h1>Welcome to Users Index.</h1>
+<h1>Welcome <%= current_user.name %></h1>
 
 <div>
-There are currently <%= @users.count %> user(s) signed up!
+<% if current_user.tasks.count > 1 %>
+<h3>You have <%= current_user.tasks.count %> tasks</h3>
+<% else %>
+<h3>You have <%= current_user.tasks.count %> task</h3>
+<% end -%>
 </div>
